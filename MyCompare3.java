@@ -13,12 +13,25 @@ public class MyCompare3 {
 		dogs.add(new Dog("Alfie", 4));
 
 		System.out.println(dogs);
-		Collections.sort(dogs, new Comparator<Animal>() {
-			@Override
-			public int compare(Animal a, Animal b){
-			    return a.getLegs() - b.getLegs();
-			}
+		
+		// sorts ascending order
+		Collections.sort(dogs, new Comparator<Animal>() { // anonymous class object implements Comparator<Animal>
+		
+		@Override
+		public int compare(Animal a, Animal b){
+		return a.getLegs() - b.getLegs();
+		
+		// equals() is already overridden as Object class is superclass
+		}
+		
 		});
+		
+		/* Here's another way to make sense above:
+		Comparator<Animal> c = new myComparator(); // interface<T> name = new class() (myComparator implements Comparator)
+		
+		Collections.sort(dogs, new myComparator() or c); // takes list & Comparator<T> => sort
+		*/
+
 		System.out.println(dogs);
 	}
 }
